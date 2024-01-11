@@ -94,11 +94,11 @@ const Draggable = ({ id }) => {
           {!isInputOpen && (
             <div className="flex w-36 h-36 overflow-hidden">
               <h1
-                className="w-full h-full overflow-auto break-words m-2 p-2"
+                className="w-full h-full overflow-auto break-words p-2"
                 id="text-output"
                 onClick={handleOnClickText}
               >
-                {inputValue}
+                {inputValue ? inputValue : "Text"}
               </h1>
             </div>
           )}
