@@ -12,7 +12,7 @@ const useDrag = (id, isPinned) => {
   useEffect(() => {
     const target = document.getElementById(id);
     if (!target) throw new Error("element doesn't exist");
-    const container = target.parentElement;
+    const container = target.parentElement.parentElement;
     if (!container) throw new Error("element must have a parent");
 
     const onMouseDown = (e) => {
@@ -30,12 +30,23 @@ const useDrag = (id, isPinned) => {
 
     const onMouseMove = (e) => {
       if (!isClicked.current || isPinned ) return;
-      // changing top postion using string interpolation
       const nextX = e.clientX - coords.current.startX + coords.current.lastX;
       const nextY = e.clientY - coords.current.startY + coords.current.lastY;
 
-      target.style.top = `${nextY}px`;
-      target.style.left = `${nextX}px`;
+      // Boundary checks
+      const containerRect = container.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+
+      const minX = 0;
+      const maxX = containerRect.width - targetRect.width;
+      const minY = 0;
+      const maxY = containerRect.height - targetRect.height;
+
+      const boundedX = Math.min(Math.max(nextX, minX), maxX);
+      const boundedY = Math.min(Math.max(nextY, minY), maxY);
+
+      target.style.left = `${boundedX}px`;
+      target.style.top = `${boundedY}px`;
     };
 
     target.addEventListener("mousedown", onMouseDown);
