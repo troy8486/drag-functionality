@@ -16,9 +16,9 @@ const appSlice = createSlice({
         togglePinElement: (state, action) => {
             const index = state.pinnedElements.indexOf(action.payload);
             if (index >= 0) {
-              state.pinnedElements.splice(index, 1); // Remove if it's already pinned
+              state.pinnedElements.splice(index, 1); 
             } else {
-              state.pinnedElements.push(action.payload); // Add to pinned if it's not
+              state.pinnedElements.push(action.payload); 
             }
           },
     }

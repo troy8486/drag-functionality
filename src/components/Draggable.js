@@ -16,14 +16,14 @@ const Draggable = ({ id }) => {
 
   const dispatch = useDispatch();
 
-  const pinnedStyle = isPinned ? { zIndex: 1000 } : {}; 
+  const pinnedStyle = isPinned ? { zIndex: 1000 } : {};
 
   const handleRemoveDraggable = () => {
     dispatch(removeDraggableElement(id));
   };
 
   const handleInputText = (e) => {
-    setInputValue(e.target.value); // Store the current input value
+    setInputValue(e.target.value);
   };
 
   const handleOnClickText = (event) => {
@@ -37,15 +37,13 @@ const Draggable = ({ id }) => {
   };
 
   const handleToggleInput = () => {
-    setIsInputOpen(!isInputOpen); // Toggle the isInputOpen state
+    setIsInputOpen(!isInputOpen);
   };
 
-  // Hide input and print value when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (event.target.id !== "input") {
         setIsInputOpen(false);
-        console.log(inputValue); // Print the value of the input when it's hidden
       }
     };
 
@@ -88,7 +86,7 @@ const Draggable = ({ id }) => {
               id="input"
               onChange={handleInputText}
               className="w-40 h-36 overflow-y-auto rounded-xl m-2 p-2 bg-yellow-100"
-              value={inputValue} // Controlled component
+              value={inputValue}
             />
           )}
           {!isInputOpen && (
@@ -104,13 +102,14 @@ const Draggable = ({ id }) => {
           )}
         </div>
         <div className="flex flex-row-reverse text-sm items-center font-medium">
-        <button
-          className="w-16 h-5 rounded-xl m-2 bg-yellow-100"
-          alt="edit"
-          onClick={handleToggleInput}
-        >{isInputOpen ? "Close" : "Edit"}</button>
+          <button
+            className="w-16 h-5 rounded-xl m-2 bg-yellow-100"
+            alt="edit"
+            onClick={handleToggleInput}
+          >
+            {isInputOpen ? "Close" : "Edit"}
+          </button>
         </div>
- 
       </div>
     </div>
   );

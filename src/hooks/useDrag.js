@@ -21,7 +21,7 @@ const useDrag = (id, isPinned) => {
       coords.current.startX = e.clientX;
       coords.current.startY = e.clientY;
     };
-    
+
     const onMouseUp = () => {
       isClicked.current = false;
       coords.current.lastX = target.offsetLeft;
@@ -29,11 +29,10 @@ const useDrag = (id, isPinned) => {
     };
 
     const onMouseMove = (e) => {
-      if (!isClicked.current || isPinned ) return;
+      if (!isClicked.current || isPinned) return;
       const nextX = e.clientX - coords.current.startX + coords.current.lastX;
       const nextY = e.clientY - coords.current.startY + coords.current.lastY;
 
-      // Boundary checks
       const containerRect = container.getBoundingClientRect();
       const targetRect = target.getBoundingClientRect();
 
