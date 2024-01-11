@@ -20,7 +20,7 @@ A React-based application where users can post, edit, delete, and drag notes on 
 ### Installation
 
 1. Clone the repository to your local machine.
-   git clone [https://your-repository-url.git](https://github.com/troy8486/drag-functionality.git)
+   git clone [https://repository-url.git](https://github.com/troy8486/drag-functionality.git)
 
 2. Navigate to the cloned directory.
     cd platiniumrx
